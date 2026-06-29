@@ -1,0 +1,36 @@
+---
+title: "**ECON 4036 Applied Econometrics**"  
+subtitle: "Homework #9 Solutions"
+output: pdf_document
+documentclass: article
+papersize: a4
+fontsize: 12pt
+mainfont: Times New Roman
+geometry: top=5mm, left=29.6mm, right=29.6mm, bottom=4.9mm
+---
+
+
+```{r setup, include=FALSE}
+coursedata <- data.frame(cw=c(5,5,10,12,14,16),ex=c(38,45,69,65,75,96))
+attach(coursedata)
+require(stargazer)
+```
+
+## Answer 1b)
+
+```{r plot, echo=TRUE, size=11, fig.width = 10, fig.height = 10, background= '#FFFFFF' }
+
+plot(cw, ex, xlab="Coursework mark", ylab="Exam mark", xlim=c(0,20), 
+     ylim=c(0,100), main="Scatterplot of coursework and exam marks",
+     col="blue")
+```
+
+\newpage
+
+## Answer 1c)
+
+```{r table, echo=TRUE, message=FALSE, results='asis', size=11}
+m1 <- lm(ex ~ cw)
+stargazer(m1, type = "latex",  title = "Regression Table: ex = cw",
+          header=FALSE, font.size="Large")
+```
